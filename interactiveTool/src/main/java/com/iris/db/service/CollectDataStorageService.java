@@ -9,7 +9,7 @@ public interface CollectDataStorageService {
      * save record
      * @param record
      */
-    void saveRecord(StockRecord record);
+    int saveRecord(StockRecord record);
 
     /**
      * find record by default id
