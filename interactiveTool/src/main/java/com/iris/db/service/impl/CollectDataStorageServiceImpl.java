@@ -1,9 +1,10 @@
 package com.iris.db.service.impl;
 
-import com.iris.db.service.constant.CommonValueConstant;
-import com.iris.db.service.constant.SqlConstant;
-import com.iris.db.service.domain.StockRecord;
+import com.iris.db.domain.constant.CommonValueConstant;
+import com.iris.db.domain.constant.SqlConstant;
+import com.iris.db.domain.dao.StockRecord;
 import com.iris.db.service.CollectDataStorageService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+@Slf4j
 public class CollectDataStorageServiceImpl implements CollectDataStorageService {
 
     @Autowired
@@ -27,6 +29,7 @@ public class CollectDataStorageServiceImpl implements CollectDataStorageService 
 
     @Override
     public StockRecord getRecordById(String stockRecordId) {
+        log.info("start query database");
         StockRecord record;
         try {
              record = jdbcTemplate.queryForObject(SqlConstant.QUERY_RECORD_SQL, new BeanPropertyRowMapper<>(StockRecord.class),

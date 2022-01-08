@@ -1,4 +1,4 @@
-package com.iris.db.service.constant;
+package com.iris.db.domain.constant;
 
 public class CommonValueConstant {
     public static final int NULL_RESULT=0;
