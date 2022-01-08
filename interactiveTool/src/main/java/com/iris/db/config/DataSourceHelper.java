@@ -52,7 +52,7 @@ public class DataSourceHelper {
             ResultSet resultSet = statement.executeQuery(sql);
             if(!resultSet.next()){
                 // not found database, initial database first
-                systemEnvService.prepareDatabase();
+                systemEnvService.prepareDatabase(connection);
             }
             if(resultSet.isClosed()){
                 resultSet.close();
