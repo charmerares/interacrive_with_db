@@ -1,6 +1,6 @@
 package com.iris.db.service;
 
-import com.iris.db.domain.StockRecord;
+import com.iris.db.service.domain.StockRecord;
 
 import java.util.List;
 

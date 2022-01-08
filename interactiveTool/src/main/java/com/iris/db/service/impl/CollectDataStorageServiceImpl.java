@@ -1,18 +1,18 @@
 package com.iris.db.service.impl;
 
-import com.iris.db.constant.CommonValueConstant;
-import com.iris.db.constant.SqlConstant;
-import com.iris.db.domain.StockRecord;
+import com.iris.db.service.constant.CommonValueConstant;
+import com.iris.db.service.constant.SqlConstant;
+import com.iris.db.service.domain.StockRecord;
 import com.iris.db.service.CollectDataStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
+@Component
 public class CollectDataStorageServiceImpl implements CollectDataStorageService {
 
     @Autowired
@@ -27,9 +27,13 @@ public class CollectDataStorageServiceImpl implements CollectDataStorageService 
 
     @Override
     public StockRecord getRecordById(String stockRecordId) {
-        StockRecord record=jdbcTemplate.queryForObject(SqlConstant.QUERY_RECORD_SQL, new BeanPropertyRowMapper<>(StockRecord.class),
-                stockRecordId);
-
+        StockRecord record;
+        try {
+             record = jdbcTemplate.queryForObject(SqlConstant.QUERY_RECORD_SQL, new BeanPropertyRowMapper<>(StockRecord.class),
+                    stockRecordId);
+        }catch (EmptyResultDataAccessException e){
+            record=null;
+        }
         return record;
     }
 

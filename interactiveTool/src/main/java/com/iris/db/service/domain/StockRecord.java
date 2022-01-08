@@ -1,4 +1,4 @@
-package com.iris.db.domain;
+package com.iris.db.service.domain;
 
 import lombok.Data;
 
