@@ -1,7 +1,7 @@
 package com.iris.db.config;
 
 import com.iris.db.domain.constant.SqlConstant;
-import com.iris.db.service.SystemEnvService;
+import com.iris.db.service.internal.SystemEnvService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
